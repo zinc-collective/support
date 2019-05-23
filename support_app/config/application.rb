@@ -17,7 +17,7 @@ require "action_view/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module ConnectHosted
+module SupportApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
@@ -29,5 +29,8 @@ module ConnectHosted
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
+    end
   end
 end
