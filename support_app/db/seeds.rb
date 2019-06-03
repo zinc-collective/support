@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+cohere_inbox = Inbox.find_or_create_by(name: "Cohere")
+cohere_inbox.update(confirmation_message: "Thanks! We'll get back with you!")
