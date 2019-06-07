@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.describe Receipt, type: :model do
   describe "#deliver" do
     it "Updates the receipts state" do
+
       current_time = Time.now
       allow(Time).to receive(:now).and_return(current_time)
       receipt = Receipt.new(topic: Receipt::TOPICS.first)
+      allow(receipt.mailer).to receive(:receipt_email).and_return(double(deliver: true))
       receipt.deliver
       expect(receipt).to be_delivered
       expect(receipt.delivered_at).to eq(current_time)

@@ -7,7 +7,7 @@ RSpec.describe "Guest messages inbox", :type => :system do
     @guest = FactoryBot.build(:guest)
   end
 
-  it "Displays a confirmation message" do
+  scenario "Sending a message to an inbox with a confirmation message" do
     visit inbox_path(@inbox)
     message_content = "Can you send me the pricing for your services?"
 

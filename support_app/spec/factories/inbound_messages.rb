@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :inbound_message do
     inbox
+    raw_body { FFaker::Lorem.sentences }
 
     trait :from_guest_sender do
       transient do
