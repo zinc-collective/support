@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   resources :inboxes, only: [:show]
   resources :inbound_messages, only: [:create, :show]
+
+  root "home#show"
 end
