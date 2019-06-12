@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 2019_06_04_000631) do
     t.uuid "inbox_id"
     t.uuid "sender_id"
     t.string "status", default: "received"
-    t.string "sender_name"
-    t.string "sender_email"
-    t.text "raw_body"
+    t.string "sender_name", null: false
+    t.string "sender_email", null: false
+    t.text "raw_body", null: false
     t.datetime "received_at", default: -> { "CURRENT_TIMESTAMP" }
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,9 +40,10 @@ ActiveRecord::Schema.define(version: 2019_06_04_000631) do
   end
 
   create_table "inboxes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.boolean "redirect_on_completion"
-    t.string "redirect_on_completion_url"
+    t.string "name", null: false
+    t.boolean "redirect_on_completion", default: false
+    t.string "redirect_on_success_url"
+    t.string "redirect_on_failure_url"
     t.text "confirmation_message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,10 +58,10 @@ ActiveRecord::Schema.define(version: 2019_06_04_000631) do
 
   create_table "receipts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "recipient_id"
-    t.string "topic"
+    t.string "topic", null: false
     t.string "status", default: "undelivered"
     t.string "address", null: false
-    t.string "via", default: "email"
+    t.string "via", default: "email", null: false
     t.string "receiptable_type", null: false
     t.uuid "receiptable_id", null: false
     t.datetime "delivered_at"

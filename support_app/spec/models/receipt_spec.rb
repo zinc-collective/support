@@ -1,9 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Receipt, type: :model do
   describe "#deliver" do
     it "Updates the receipts state" do
-
       current_time = Time.now
       allow(Time).to receive(:now).and_return(current_time)
       receipt = Receipt.new(topic: Receipt::TOPICS.first)
@@ -13,7 +12,7 @@ RSpec.describe Receipt, type: :model do
       expect(receipt.delivered_at).to eq(current_time)
     end
 
-    context 'when via: :email' do
+    context "when via: :email" do
       let(:mail) { double(deliver: true) }
       subject(:receipt) { Receipt.new(via: via, recipient: nil, topic: topic) }
       let(:via) { :email }
@@ -37,7 +36,7 @@ RSpec.describe Receipt, type: :model do
       end
 
       context "And the topic is invalid" do
-        let(:topic) { :'invalid' }
+        let(:topic) { :invalid }
 
         it "Raises an exception" do
           aggregate_failures do

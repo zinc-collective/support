@@ -20,13 +20,13 @@ class Receipt < ApplicationRecord
   def mailer
     case topic&.to_sym
     when :'inbox.message.received'
-       Receipts::InboxMessageReceivedMailer
+      Receipts::InboxMessageReceivedMailer
     when :'message.delivered'
-       Receipts::MessageDeliveredMailer
+      Receipts::MessageDeliveredMailer
     else
-     raise InvalidTopicError, topic&.to_sym
+      raise InvalidTopicError, topic&.to_sym
     end
   end
 
-  class InvalidTopicError < RuntimeError; end;
+  class InvalidTopicError < RuntimeError; end
 end

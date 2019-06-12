@@ -5,7 +5,7 @@ if ENV["SMTP_ADDRESS"]
     port: ENV["SMTP_PORT"].to_i,
     user_name: ENV["SMTP_USER_NAME"],
     password: ENV["SMTP_PASSWORD"],
-    authentication: ENV["SMTP_AUTHENTICATION"].to_sym
+    authentication: ENV["SMTP_AUTHENTICATION"].to_sym,
   }
 
   ActionMailer::Base.delivery_method = :smtp
@@ -17,4 +17,3 @@ if ENV["APP_ROOT_URL"]
   ActionMailer::Base.default_url_options[:port] = root_uri.port if root_uri.port == root_uri.default_port
   ActionMailer::Base.default_url_options[:scheme] = root_uri.scheme
 end
-

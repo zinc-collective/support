@@ -12,5 +12,11 @@ FactoryBot.define do
         create_list(:inbox_permission, evaluator.staff_count, inbox: inbox)
       end
     end
+
+    trait :with_redirect_urls do
+      redirect_on_completion { true }
+      redirect_on_success_url { "https://example.com/success" }
+      redirect_on_failure_url { "https://example.com/failure" }
+    end
   end
 end

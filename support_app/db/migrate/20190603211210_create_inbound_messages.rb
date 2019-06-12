@@ -4,11 +4,11 @@ class CreateInboundMessages < ActiveRecord::Migration[5.2]
       t.belongs_to :inbox, type: :uuid
       t.belongs_to :sender, type: :uuid
       t.string :status, default: :received
-      t.string :sender_name
-      t.string :sender_email
-      t.text :raw_body
+      t.string :sender_name, null: false
+      t.string :sender_email, null: false
+      t.text :raw_body, null: false
 
-      t.datetime :received_at, default: -> { 'CURRENT_TIMESTAMP' }
+      t.datetime :received_at, default: -> { "CURRENT_TIMESTAMP" }
       t.timestamps
     end
   end

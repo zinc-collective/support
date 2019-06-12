@@ -6,6 +6,7 @@ class Inbox < ApplicationRecord
 
   def process_inbound_message(inbound_message_params)
     inbound_message = inbound_messages.create(inbound_message_params)
+    return inbound_message unless inbound_message.persisted?
     transaction do
       inbound_message
         .receipts.create!(address: inbound_message.sender_email,
