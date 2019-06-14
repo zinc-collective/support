@@ -2,6 +2,9 @@ require "rails_helper"
 
 RSpec.describe Inbox, type: :model do
   let(:inbox) { FactoryBot.create(:inbox) }
+  it "is slugged" do
+    expect(inbox.slug).to be_present
+  end
   describe "#process_inbound_message" do
     context "when the inbound message is invalid" do
       it "does not save the inbound message" do
