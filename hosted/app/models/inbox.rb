@@ -4,6 +4,9 @@ class Inbox < ApplicationRecord
   has_many :inbox_permissions
   has_many :support_staff, through: :inbox_permissions, source: :person
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   def process_inbound_message(inbound_message_params)
     inbound_message = inbound_messages.create(inbound_message_params)
     return inbound_message unless inbound_message.persisted?

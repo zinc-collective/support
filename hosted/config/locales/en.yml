@@ -30,4 +30,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      inbound_message:
+        sender_email: "Your Email"
+        sender_name: "Your Name"
+        raw_body: "Message"
+  helpers:
+    submit:
+      inbound_message:
+        create: "Leave a message!"

@@ -1,9 +1,8 @@
 <%= form_for inbound_message do |inbound_message_form| %>
+
   <%= inbound_message_form.hidden_field :inbox_id %>
-  <%= inbound_message_form.label :sender_name %>
-  <%= inbound_message_form.text_field :sender_name %>
-  <%= inbound_message_form.label :sender_email %>
-  <%= inbound_message_form.text_field :sender_email %>
-  <%= inbound_message_form.text_area :raw_body %>
+  <%= render "fields/text_field", form: inbound_message_form, field: :sender_name %>
+  <%= render "fields/text_field", form: inbound_message_form, field: :sender_email %>
+  <%= render "fields/text_area", form: inbound_message_form, field: :raw_body %>
   <%= inbound_message_form.submit %>
 <% end %>
