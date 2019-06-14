@@ -8,7 +8,7 @@ module Receipts
 
       it { is_expected.to have_subject("Your message to #{message.inbox.name} has been received.") }
       it { is_expected.to deliver_to(message.sender_email) }
-      it { is_expected.to deliver_from("no-reply@example.com") }
+      it { is_expected.to deliver_from("no-reply@wegotyourback.today") }
       it { is_expected.to have_body_text(/Hello #{message.sender_name},/) }
     end
   end
