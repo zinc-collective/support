@@ -13,7 +13,7 @@ module Receipts
       it { is_expected.to have_subject("Message to #{message.inbox.name} from #{message.sender_name}.") }
       it { is_expected.to deliver_to(inbox.support_staff.first.email) }
       it { is_expected.to reply_to(message.sender_email) }
-      it { is_expected.to deliver_from("no-reply@example.com") }
+      it { is_expected.to deliver_from("no-reply@wegotyourback.today") }
       it { is_expected.to have_body_text(message.body) }
     end
   end
