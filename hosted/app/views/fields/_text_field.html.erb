@@ -1,8 +1,6 @@
-<div class="field <%= form.object.errors[field].present? ? '--error' : '' %>"
+<div class="pa2 measure lh-copy <%= form.object.errors[field].present? ? '--error' : '' %>"
      data-field="<%= field_name_attribute(form.object, field) %>">
-  <%= form.label field %>
-  <%- form.object.errors[field].each do |message| %>
-    <span class="error"><%= message %></span>
-  <%- end %>
-  <%= form.text_field field %>
+     <%= form.label field, class: "db pv2" %>
+     <%- form.object.errors[field].each do |message| %><span class="error"><%= message %></span><%- end %>
+     <%= form.text_field field, class: "input-reset ba b--black-20 pa2 mb2 db w-100 bw1" %>
 </div>

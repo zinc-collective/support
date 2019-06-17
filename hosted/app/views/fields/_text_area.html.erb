@@ -1,8 +1,8 @@
-<div class="field <%= form.object.errors[field].present? ? '--error' : '' %>"
+<div class="measure pa2 field <%= form.object.errors[field].present? ? '--error' : '' %>"
      data-field="<%= field_name_attribute(form.object, field) %>">
-  <%= form.label field %>
+  <%= form.label field, class: "db pv2" %>
   <%- form.object.errors[field].each do |message| %>
     <span class="error"><%= message %></span>
   <%- end %>
-  <%= form.text_area field %>
+  <%= form.text_area field, class: "db border-box hover-black w-100 measure ba b--black-20 pa2 bw1 br2 mb2" %>
 </div>
