@@ -1,4 +1,6 @@
 class InboundMessagesController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :create
+
   def create
     @inbox = Inbox.find_by(id: inbound_messages_params[:inbox_id])
     @inbound_message = @inbox.process_inbound_message(inbound_messages_params)
