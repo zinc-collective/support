@@ -8,3 +8,6 @@
 
 cohere_inbox = Inbox.find_or_create_by(name: "Cohere")
 cohere_inbox.update(confirmation_message: "Thanks! We'll get back with you!")
+
+wegotyourback_inbox = Inbox.find_or_create_by(name: "WeGotYourBackToday")
+wegotyourback_inbox.update(confirmation_message: "Thanks! We'll get back with you!")
