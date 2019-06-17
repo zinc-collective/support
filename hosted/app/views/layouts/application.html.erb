@@ -4,14 +4,16 @@
     <title>We Got Your Back - Support Tooling for Indies, Hobbyists and Sysadmins</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.11.1/css/tachyons.css" />
   </head>
 
   <body>
     <%= yield %>
-
-    <footer>
-      <p>Maintained with love by <a href="https://www.zincma.de/">Zinc.</a></p>
-      <p>Copyright 2019 Zinc Technology Inc, all rights reserved (for now).</p>
+    <footer class="pa4 bg-purple near-white">
+      <div class="mw6 w-100 center f6">
+      <p class="lh-copy measure">&copy; 2019 Zinc Technology Inc, all rights reserved (for now).</p>
+      <p class="lh-copy measure">Maintained with love by <a class="hover-white light-purple" href="https://www.zincma.de/">Zinc.</a></p>
+      </div>
     </footer>
   </body>
 </html>
