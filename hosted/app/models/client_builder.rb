@@ -10,6 +10,11 @@ class ClientBuilder
       confirmation_message: "Thanks! We'll get back to you shortly!",
       support_staff: ["hello+wegotyourback@zincma.de"]
     },
+    {
+      name: "Nourish",
+      confirmation_message: "Thanks! We'll get back to you shortly!",
+      support_staff: ["hello+wegotyourback@zincma.de"]
+    }
   ]
 
   def populate
