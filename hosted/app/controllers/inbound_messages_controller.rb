@@ -22,7 +22,7 @@ class InboundMessagesController < ApplicationController
 
   private def inbound_messages_params
     params.require(:inbound_message)
-      .permit(:inbox_id, :sender_id, :sender_name, :sender_email, :raw_body)
+      .permit(:inbox_id, :sender_id, :sender_name, :sender_email, :raw_body, :accept_terms)
       .merge(received_at: Time.now)
   end
 end
