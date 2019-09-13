@@ -1,8 +1,7 @@
-<%= form_for inbound_message do |inbound_message_form| %>
-
+<%= form_for inbound_message, html: { class: "pa4 near-black" } do |inbound_message_form| %>
   <%= inbound_message_form.hidden_field :inbox_id %>
   <%= render "fields/text_field", form: inbound_message_form, field: :sender_name %>
   <%= render "fields/text_field", form: inbound_message_form, field: :sender_email %>
   <%= render "fields/text_area", form: inbound_message_form, field: :raw_body %>
-  <%= inbound_message_form.submit %>
+  <%= inbound_message_form.submit "Send Message", class: "f6 f5-l button-reset ml2 pv3 tc bn bg-animate bg-black-70 hover-bg-black white pointer w-100 w-25-m w-20-l"  %>
 <% end %>
