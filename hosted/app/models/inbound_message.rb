@@ -1,5 +1,9 @@
 class InboundMessage < ApplicationRecord
   belongs_to :inbox
+
+  # HoneyTrap
+  attr_accessor :accept_terms
+
   has_many :receipts, as: :receiptable
 
   validates_presence_of :sender_email
