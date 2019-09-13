@@ -7,9 +7,9 @@ class InboundMessagesController < ApplicationController
 
     if @inbox.redirect_on_completion? && @inbound_message.persisted?
       redirect_to @inbox.redirect_on_success_url
-    elsif @inbox.redirect_on_completion? && !@inbound_message.persisted?
+    elsif @inbox.redirect_on_completion? && (!@inbound_message.persisted? && !@inbound_message.spam?)
       redirect_to @inbox.redirect_on_failure_url
-    elsif @inbox.persisted?
+    elsif @inbound_message.persisted? || @inbound_message.spam?
       redirect_to @inbound_message
     else
       render :edit

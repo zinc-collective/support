@@ -15,6 +15,11 @@ module Receipts
       it { is_expected.to reply_to(message.sender_email) }
       it { is_expected.to deliver_from("no-reply@wegotyourback.today") }
       it { is_expected.to have_body_text(message.body) }
+
+      context "when the inbound message is a spam message" do
+        let(:message) { FactoryBot.create(:inbound_message, :from_guest_sender, inbox: inbox, spam: true) }
+        it { is_expected.to have_subject("[spam?] Message to #{message.inbox.name} from #{message.sender_name}.") }
+      end
     end
   end
 end

@@ -8,13 +8,16 @@ class Inbox < ApplicationRecord
   friendly_id :name, use: :slugged
 
   def process_inbound_message(inbound_message_params)
+    inbound_message_params[:spam] = spam?(inbound_message_params)
     inbound_message = inbound_messages.create(inbound_message_params)
     return inbound_message unless inbound_message.persisted?
     transaction do
-      inbound_message
-        .receipts.create!(address: inbound_message.sender_email,
-                          topic: :"message.delivered",
-                          via: :email).deliver
+      unless inbound_message.spam?
+        inbound_message
+          .receipts.create!(address: inbound_message.sender_email,
+                            topic: :"message.delivered",
+                            via: :email).deliver
+      end
 
       support_staff.each do |staff|
         inbound_message
@@ -25,5 +28,9 @@ class Inbox < ApplicationRecord
 
       inbound_message
     end
+  end
+
+  def spam?(message_attributes)
+    message_attributes[:accept_terms].present?
   end
 end

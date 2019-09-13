@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_12_231509) do
+ActiveRecord::Schema.define(version: 2019_09_13_190543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_231509) do
     t.datetime "received_at", default: -> { "CURRENT_TIMESTAMP" }
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "spam", default: false, null: false
     t.index ["inbox_id"], name: "index_inbound_messages_on_inbox_id"
     t.index ["sender_id"], name: "index_inbound_messages_on_sender_id"
   end
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_06_12_231509) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.boolean "honeytrap", default: false, null: false
     t.index ["slug"], name: "index_inboxes_on_slug", unique: true
   end
 

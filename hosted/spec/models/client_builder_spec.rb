@@ -7,6 +7,7 @@ describe ClientBuilder do
       cohere_inbox = Inbox.find_by(name: "Cohere")
       expect(cohere_inbox).to be_present
       expect(cohere_inbox.slug).to eql("cohere")
+      expect(cohere_inbox).to be_honeytrap
       expect(cohere_inbox.redirect_on_completion?).to eql true
       expect(cohere_inbox.redirect_on_success_url).to eql "https://www.wecohere.com/thanks/for-reaching-out"
       expect(cohere_inbox.redirect_on_failure_url).to eql "https://www.wecohere.com/contact"
