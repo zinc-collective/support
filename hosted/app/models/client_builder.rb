@@ -1,6 +1,14 @@
 class ClientBuilder
   CLIENTS = [
     {
+      name: "Zinc", support_staff: ["hello@zinc.coop"],
+      confirmation_message: "Thanks! We'll et back to you shortly!"
+    },
+    {
+      name: "Moment Park", support_staff: ["hello+moment-park@zinc.coop"],
+      confirmation_message: "Thanks! We'll et back to you shortly!"
+    },
+    {
       name: "Cohere", support_staff: ["info@wecohere.com"],
       on_success_redirect: "https://www.wecohere.com/thanks/for-reaching-out",
       on_failure_redirect: "https://www.wecohere.com/contact",
