@@ -1,0 +1,25 @@
+{
+  "name": "@zinc/support",
+  "version": "0.1.0",
+  "description": "Support is a hybrid hosted app/service as well as library solution for independent developers who want to provide a public inbox for receiving support requests without paying piles of money.",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zinc-collective/support.git"
+  },
+  "keywords": [
+    "customer-support"
+  ],
+  "author": "Zinc Collective, LLC",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/zinc-collective/support/issues"
+  },
+  "homepage": "https://github.com/zinc-collective/support#readme",
+  "devDependencies": {
+    "cucumber": "^6.0.5"
+  }
+}
