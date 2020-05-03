@@ -8,8 +8,8 @@ Feature: Scheduling Meetings
   Scenario: Team Member Creates New Available Time Slot through Invitation
     From Their preferred Calendar Application
     Given a Team Member with a Public Schedule Link
-    When the Team Member invites their Public Schedule Link Email ID to an event using their preferred Calendar application
-    Then the Available Time Slot is visible on the Team Member's Public Schedule Link
+    When the Team Member invites their Public Schedule's Availability Email Address to a Calendar Event
+    Then an Available Time Slot is visible on the Team Member's Public Schedule Link for that Calendar Event's
 
   @mvp @future
   Scenario: Guest may Schedule a Meeting with a Team Member using a Public Schedule Link
