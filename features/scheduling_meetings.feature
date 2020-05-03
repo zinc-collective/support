@@ -5,8 +5,7 @@ Feature: Scheduling Meetings
   I want a public place for people to schedule meetings with me
 
   @mvp @wip
-  Scenario: Team Member Creates New Available Time Slot through Invitation
-    From Their preferred Calendar Application
+  Scenario: Team Member Makes a Available Time Slot by Email Invitation
     Given a Team Member with a Public Schedule Link
     When the Team Member invites their Public Schedule's Availability Email Address to a Calendar Event
     Then an Available Time Slot is visible on the Team Member's Public Schedule Link for that Calendar Event's
