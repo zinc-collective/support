@@ -1,0 +1,3 @@
+#!/bin/bash
+
+npx cucumber-js --tags @wip

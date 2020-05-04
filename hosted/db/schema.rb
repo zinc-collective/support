@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_13_190543) do
+ActiveRecord::Schema.define(version: 2020_05_03_175728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -84,6 +84,15 @@ ActiveRecord::Schema.define(version: 2019_09_13_190543) do
     t.datetime "updated_at", null: false
     t.index ["receiptable_type", "receiptable_id"], name: "index_receipts_on_receiptable_type_and_receiptable_id"
     t.index ["recipient_id"], name: "index_receipts_on_recipient_id"
+  end
+
+  create_table "team_members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "public_schedule_slug", null: false
+    t.string "public_schedule_availability_email_address", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["public_schedule_availability_email_address"], name: "public_schedule_availability_email"
+    t.index ["public_schedule_slug"], name: "public_schedule_slug"
   end
 
 end

@@ -46,7 +46,7 @@ group :development, :test do
   gem "ffaker", "~> 2.9"
 
   # Assertions against rails
-  gem "shoulda-matchers", "~> 4.1"
+  gem "shoulda-matchers", "~> 4.3"
 
   # Fakes for external dependencies
   gem "coruro-ruby", "~> 0.6"
