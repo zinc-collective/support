@@ -1,4 +1,7 @@
 #!/bin/bash
 
 npm i
+if command -v rbenv; then
+  rbenv install -s 2.6.3
+fi;
 (cd hosted && bin/setup)
