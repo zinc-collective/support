@@ -1,4 +1,6 @@
 # Support
+![Test](https://github.com/zinc-collective/support/workflows/Ruby/badge.svg)
+
 Support is a hybrid hosted app/service as well as library solution for independent developers who want to provide a public inbox for receiving support requests without paying piles of money.
 
 ## Design

@@ -1,0 +1,65 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
+# For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
+
+name: Ruby
+
+on:
+  push:
+    branches: [ production ]
+  pull_request:
+    branches: [ '**' ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:11
+        env:
+          POSTGRES_USER: support_app_test
+          POSTGRES_PASSWORD: support_app_test
+          POSTGRES_DB: support_app_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1 # reads from the project's `.ruby-version` file
+
+    # Debug tool: https://github.com/marketplace/actions/debugging-with-tmate
+    # - name: Setup tmate session
+    #   uses: mxschmitt/action-tmate@v2
+
+    - name: Setup cache key and directory for gems cache
+      uses: actions/cache@v1.1.2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+    - name: Mailcatcher setup
+      run: |
+        sudo apt-get install ruby-dev libsqlite3-dev
+        gem install mailcatcher --conservative
+        mailcatcher
+    - name: Build and run tests
+      env:
+        DATABASE_URL: postgres://support_app_test:support_app_test@localhost:5432/support_app_test
+        RAILS_ENV: test
+        DISPLAY: ':99'
+      run: |
+        cd hosted
+        bundle config path vendor/bundle
+        bundle install --jobs 4 --retry 3
+        bundle exec rake db:test:prepare
+        sudo Xvfb -ac $DISPLAY -screen 0 1280x1024x24 > /dev/null 2>&1 &
+        bundle exec rspec
