@@ -33,9 +33,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 2.6.3
+      uses: ruby/setup-ruby@v1 # reads from the project's `.ruby-version` file
+
     # Debug tool: https://github.com/marketplace/actions/debugging-with-tmate
     # - name: Setup tmate session
     #   uses: mxschmitt/action-tmate@v2
