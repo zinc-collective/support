@@ -1,3 +1,5 @@
+# This project has been deprecated in favor of [Convene's Contact Form Furniture](https://github.com/zinc-collective/convene/issues/847)
+
 # Support
 ![Test](https://github.com/zinc-collective/support/workflows/Ruby/badge.svg)
 
